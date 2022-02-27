@@ -2,7 +2,7 @@
 require("dotenv").config({ path: "./config.env" });
 
 const connectDB = require("./config/db");
-
+const cors = require("cors");
 //connect DB
 connectDB();
 
@@ -13,6 +13,8 @@ const app = express();
 const errorHandler = require("./middleware/error");
 
 app.use(express.json());
+
+app.use(cors());
 
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/private", require("./routes/private"));
